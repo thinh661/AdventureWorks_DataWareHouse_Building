@@ -1,0 +1,1012 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/1/2024 7:25:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-T6KSEJC7"
+  DTS:CreatorName="LAPTOP-T6KSEJC7\pc"
+  DTS:DTSID="{5A7488A1-4C74-4A3F-9910-BCF3250BE179}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{052985C4-5F75-4D05-97BB-AF739CFCA9C0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-T6KSEJC7\THINH1.AdventureWorks2012]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4EC838B7-63B9-4DDA-8A74-D0816E997975}"
+      DTS:ObjectName="LAPTOP-T6KSEJC7\THINH1.AdventureWorks2012">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-T6KSEJC7\THINH1;Initial Catalog=AdventureWorks2012;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{4EC838B7-63B9-4DDA-8A74-D0816E997975}LAPTOP-T6KSEJC7\THINH1.AdventureWorks2012;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-T6KSEJC7\THINH1.AW2012_STG]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{030DA24E-76DB-4602-8EBD-19B373BB0688}"
+      DTS:ObjectName="LAPTOP-T6KSEJC7\THINH1.AW2012_STG">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-T6KSEJC7\THINH1;Initial Catalog=AW2012_STG;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{030DA24E-76DB-4602-8EBD-19B373BB0688}LAPTOP-T6KSEJC7\THINH1.AW2012_STG;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Fact SaleOrder into STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E77209E8-F639-493F-A75B-90EF810FCC6D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Fact SaleOrder into STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Fact SaleOrder into STG\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Fact SaleOrder into STG\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Inputs[Aggregate Input 1].Columns[SalesPersonID]"
+                      cachedDataType="i4"
+                      cachedName="SalesPersonID"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesPersonID]" />
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Inputs[Aggregate Input 1].Columns[TerritoryID]"
+                      cachedDataType="i4"
+                      cachedName="TerritoryID"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TerritoryID]" />
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Inputs[Aggregate Input 1].Columns[Copy of OrderDate]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of OrderDate"
+                      lineageId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Output].Columns[Copy of OrderDate]" />
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Inputs[Aggregate Input 1].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TotalDue]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[SalesPersonID]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[SalesPersonID]"
+                      name="SalesPersonID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesPersonID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[TerritoryID]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[TerritoryID]"
+                      name="TerritoryID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TerritoryID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDate]"
+                      name="OrderDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Output].Columns[Copy of OrderDate]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[Revenue]"
+                      dataType="cy"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[Revenue]"
+                      name="Revenue">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TotalDue]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[NumberOrder]"
+                      dataType="ui8"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[NumberOrder]"
+                      name="NumberOrder">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Fact SaleOrder into STG\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact SaleOrder into STG\Conversion Date"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Conversion Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Fact SaleOrder into STG\Conversion Date.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Conversion Date.Inputs[Data Conversion Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Fact SaleOrder into STG\Conversion Date.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Output].Columns[Copy of OrderDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Output].Columns[Copy of OrderDate]"
+                      name="Copy of OrderDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[OrderDate]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Fact SaleOrder into STG\Conversion Date.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fact_SalesOrder_STG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Fact_SalesOrder_STG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-T6KSEJC7\THINH1.AW2012_STG]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-T6KSEJC7\THINH1.AW2012_STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].Columns[SalesPersonID]"
+                      cachedDataType="i4"
+                      cachedName="SalesPersonID"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[SalesPersonID]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[SalesPersonID]" />
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].Columns[TerritoryID]"
+                      cachedDataType="i4"
+                      cachedName="TerritoryID"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[TerritoryID]" />
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].Columns[OrderDate]"
+                      cachedDataType="dbDate"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].Columns[Revenue]"
+                      cachedDataType="cy"
+                      cachedName="Revenue"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[Revenue]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[Revenue]" />
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].Columns[NumberOrder]"
+                      cachedDataType="ui8"
+                      cachedName="NumberOrder"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[NumberOrder]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1].Columns[NumberOrder]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[SalesPersonID]"
+                      dataType="i4"
+                      name="SalesPersonID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                      dataType="i4"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      dataType="dbDate"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[Revenue]"
+                      dataType="cy"
+                      name="Revenue" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input].ExternalColumns[NumberOrder]"
+                      dataType="numeric"
+                      name="NumberOrder"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get data from SaleOrderHeader"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SaleOrderHeader_STG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-T6KSEJC7\THINH1.AW2012_STG]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-T6KSEJC7\THINH1.AW2012_STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                      name="TerritoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      name="TotalDue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                      name="SalesPersonID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                      dataType="i4"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="ui1"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                      dataType="i4"
+                      name="SalesPersonID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      name="SalesOrderID" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                      name="TerritoryID" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      dataType="cy"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      name="TotalDue" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="ui1"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
+                      name="SalesPersonID" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact SaleOrder into STG\Process Null"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Process Null"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Fact SaleOrder into STG\Process Null.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Process Null.Inputs[Conditional Split Input].Columns[SalesPersonID]"
+                      cachedDataType="i4"
+                      cachedName="SalesPersonID"
+                      lineageId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesPersonID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[SalePersonIDNotNull]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="SalePersonIDNotNull"
+                  synchronousInputId="Package\Load Fact SaleOrder into STG\Process Null.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output].Columns[SalesPersonID]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(SalesPersonID)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load Fact SaleOrder into STG\Process Null.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load Fact SaleOrder into STG\Process Null.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Fact SaleOrder into STG.Paths[Aggregate Output 1]"
+              endId="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Load Fact SaleOrder into STG\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Load Fact SaleOrder into STG.Paths[Data Conversion Output]"
+              endId="Package\Load Fact SaleOrder into STG\Aggregate.Inputs[Aggregate Input 1]"
+              name="Data Conversion Output"
+              startId="Package\Load Fact SaleOrder into STG\Conversion Date.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load Fact SaleOrder into STG.Paths[OLE DB Source Output]"
+              endId="Package\Load Fact SaleOrder into STG\Process Null.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Fact SaleOrder into STG.Paths[SalePersonIDNotNull]"
+              endId="Package\Load Fact SaleOrder into STG\Conversion Date.Inputs[Data Conversion Input]"
+              name="SalePersonIDNotNull"
+              startId="Package\Load Fact SaleOrder into STG\Process Null.Outputs[SalePersonIDNotNull]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Load Fact SaleOrder into STG"
+          TopLeft="282.499984564881,47.6666663351986" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Fact SaleOrder into STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader"
+          TopLeft="78.3333290533886,38.1333330681589" />
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\Load Fact SaleOrder into STG\Process Null"
+          TopLeft="124.1666598825,126.533332453436" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Load Fact SaleOrder into STG\Conversion Date"
+          TopLeft="137.499992487332,218.399998481274" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Load Fact SaleOrder into STG\Aggregate"
+          TopLeft="364.99998005728,253.933331567513" />
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG"
+          TopLeft="566.666635705366,270.399998119672" />
+        <EdgeLayout
+          Id="Package\Load Fact SaleOrder into STG.Paths[OLE DB Source Output]"
+          TopLeft="192.049994467944,79.7333330681589">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.7999993852774"
+              Start="0,0"
+              End="0,39.2999993852774">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.2999993852774" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact SaleOrder into STG.Paths[Data Conversion Output]"
+          TopLeft="293.499992487331,239.199998481274">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.4999875699488,35.5333330862389"
+              Start="0,0"
+              End="63.9999875699488,35.5333330862389">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="31.7499937849744,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.7499937849744,0"
+                    Point2="35.7499937849744,0"
+                    Point3="35.7499937849744,4" />
+                  <mssgle:LineSegment
+                    End="35.7499937849744,31.5333330862389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.7499937849744,31.5333330862389"
+                    Point2="35.7499937849744,35.5333330862389"
+                    Point3="39.7499937849744,35.5333330862389" />
+                  <mssgle:LineSegment
+                    End="63.9999875699488,35.5333330862389" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact SaleOrder into STG.Paths[Aggregate Output 1]"
+          TopLeft="491.39998005728,274.733331567513">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.266655648086,16.4666665521596"
+              Start="0,0"
+              End="67.766655648086,16.4666665521596">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="33.633327824043,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.633327824043,0"
+                    Point2="37.633327824043,0"
+                    Point3="37.633327824043,4" />
+                  <mssgle:LineSegment
+                    End="37.633327824043,12.4666665521596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.633327824043,12.4666665521596"
+                    Point2="37.633327824043,16.4666665521596"
+                    Point3="41.633327824043,16.4666665521596" />
+                  <mssgle:LineSegment
+                    End="67.766655648086,16.4666665521596" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact SaleOrder into STG.Paths[SalePersonIDNotNull]"
+          TopLeft="192.5666598825,168.133332453436">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.933332604832,50.2666660278373"
+              Start="0,0"
+              End="22.933332604832,42.7666660278373">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1333330139187" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1333330139187"
+                    Point2="0,25.1333330139187"
+                    Point3="4,25.1333330139187" />
+                  <mssgle:LineSegment
+                    End="18.933332604832,25.1333330139187" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.933332604832,25.1333330139187"
+                    Point2="22.933332604832,25.1333330139187"
+                    Point3="22.933332604832,29.1333330139187" />
+                  <mssgle:LineSegment
+                    End="22.933332604832,42.7666660278373" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.496126666334,30.1333330139187,91.9255859375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact SaleOrder into STG\Fact_SalesOrder_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact SaleOrder into STG\Get data from SaleOrderHeader">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
