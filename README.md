@@ -105,21 +105,28 @@ so I only focus about 8 main tables in AW2012 database:
 
 ## ETL Phase
 
-* Detailed instructions for the ETL phase can be found in the [ETL folder](/ETL_AW_by_SSIS).
+* Detailed instructions for the ETL phase can be found in the [ETL_SSIS folder](/ETL_AW_by_SSIS).
 
-   * Customer Dimension
+    * Load data into staging:
+        ![Load data](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Customer%20Dim.PNG)
+
+   * Transform dim person into staging:
    
     ![ETL Customer Dim](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Customer%20Dim.PNG)
 
-   * Book Dimension
+   * Transform dim territory into staging:
    
     ![ETL Book Dim](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Book%20Dim.PNG)
 
-   * Shipping Dimension
+   * Transform dim time into staging:
    
     ![ETL Shipping Dim](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Shipping%20Dim.PNG)
 
-   * Fact Table Full Load
+   * Load Fact Sales Order into staging:
+   
+    ![ETL Fact Table Full Load](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Fact%20Table%20Full%20Load.PNG)
+
+    * Load full data from staging into Data Warehouse:
    
     ![ETL Fact Table Full Load](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Fact%20Table%20Full%20Load.PNG)
 
