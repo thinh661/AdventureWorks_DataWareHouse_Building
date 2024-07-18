@@ -108,7 +108,7 @@ so I only focus about 8 main tables in AW2012 database:
 * Detailed instructions for the ETL phase can be found in the [ETL_SSIS folder](/ETL_AW_by_SSIS).
 
     * Load data into staging:
-        ![Load data](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/load_data_into_stg.png)
+    ![Load data](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/load_data_into_stg.png)
 
    * Transform dim person into staging:
    
