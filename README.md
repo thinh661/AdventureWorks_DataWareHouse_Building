@@ -108,77 +108,34 @@ so I only focus about 8 main tables in AW2012 database:
 * Detailed instructions for the ETL phase can be found in the [ETL_SSIS folder](/ETL_AW_by_SSIS).
 
     * Load data into staging:
-        ![Load data](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Customer%20Dim.PNG)
+        ![Load data](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/load_data_into_stg.png)
 
    * Transform dim person into staging:
    
-    ![ETL Customer Dim](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Customer%20Dim.PNG)
+    ![ETL Customer Dim](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/transform_dim_person_into_stg.png)
 
    * Transform dim territory into staging:
    
-    ![ETL Book Dim](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Book%20Dim.PNG)
+    ![ETL Book Dim](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/transform_dim_territory_into_stg.png)
 
    * Transform dim time into staging:
    
-    ![ETL Shipping Dim](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Shipping%20Dim.PNG)
+    ![ETL Shipping Dim](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/transform_dim_time_into_stg.png)
 
    * Load Fact Sales Order into staging:
    
-    ![ETL Fact Table Full Load](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Fact%20Table%20Full%20Load.PNG)
+    ![ETL Fact Table Full Load](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/load_fact_sales_order_into_stg.png)
 
     * Load full data from staging into Data Warehouse:
    
-    ![ETL Fact Table Full Load](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/ETL%20Fact%20Table%20Full%20Load.PNG)
+    ![ETL Fact Table Full Load](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/load_data_into_dwh.png)
 
 ## Analysis Phase
 To explore the analysis phase, refer to the [Analysis folder](/Analysis).
 
-This project harnesses the power of SQL Server Analysis Services (SSAS) for advanced data modeling and analysis. In particular, we've employed the Tabular mode of OLAP (Online Analytical Processing) to create efficient data models that cater to our analytical needs.
-
-- **Tabular Mode:** We've chosen to work with the Tabular mode in SSAS. This mode specializes in constructing tabular data models, which provide a streamlined, relational view of the data. It excels in scenarios where data retrieval speed and simplicity are top priorities.
-
-    ![SSAS OLAP](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/Cube%20Browsing%20OLAP.PNG)
 
 
 ## Reporting Phase
 For reporting and visualization using Pivot Table and Power BI, visit the [Reporting folder](/Reporting).
 
-The reporting phase in this project is designed to provide users with the flexibility and tools to gain insights from the data. We've incorporated two distinct types of reporting to cater to different user needs:
-
-#### 1. Pivot Table Reporting
-
-Pivot tables are a well-known and versatile tool within Microsoft Excel, allowing users to analyze, aggregate, and visualize data in a tabular format. This method of reporting is particularly useful when you need to perform basic ad-hoc analysis or create custom reports directly in Excel. With pivot tables, users can slice and dice the data to answer specific questions and gain insights quickly.
-
-* Total Quantity, Total Price, Total Shipping Cost, Total Revenue of the 12 months over all years
-
-![Pivot_Table_Insight_1](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/PP%20Insight%201.PNG)
-
-* The Best-selling language books
-    
-![Pivot_Table_Insight_2](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/PP%20Insight%202.PNG)
-
-* Total Quantity, Total Price, Total Shipping Cost, Total Revenue of all shipping methods for countries.
-
-![Pivot_Table_Insight_3](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/PP%20Insight%203.PNG)
-
-* Total Price of all Years
-  
-![Pivot_Table_Insight_4](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/PP%20Insight%204.PNG)
-
-
-
-#### 2. Power BI Dashboard Reporting
-
-Power BI is a powerful business intelligence tool that delivers interactive and dynamic reports, dashboards, and data visualizations. It is designed for self-service reporting, enabling users to explore data intuitively, create compelling visualizations, and share insights with others. Power BI reports are ideal for more in-depth analysis, interactive dashboards, and data-driven storytelling.
-
-These two types of reporting options provide a spectrum of reporting capabilities to suit various user preferences and needs. Whether you prefer the simplicity and familiarity of pivot tables or the dynamic and interactive experience of Power BI, this project offers a range of reporting tools to empower you to extract valuable insights from the data.
-
-![PowerBIDashboard](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/Gravity%20Book%20Sales%20Power%20BI%20Dashboard.PNG)
-
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ---
-
-Feel free to adapt and expand upon this template to provide all the necessary details, instructions, and context for your "Gravity Books Sales End-to-End Project" repository. An informative README.md helps users understand and engage with your project effectively.
