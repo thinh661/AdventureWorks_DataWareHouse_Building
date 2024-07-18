@@ -1,6 +1,6 @@
 # Data Warehouse Design and Implement Demo
-<!-- Ảnh datawarehousing1.png -->
-<!-- ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) -->
+
+![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/data-warehousing1.png)
 ## Table of Contents
 - [Introduction](#introduction)
 - [Project Phases](#project-phases)
@@ -51,21 +51,21 @@ Because I'll analysis around Sale and Product Business Process to anwser for 6 q
 so I only focus about 8 main tables in AW2012 database:
 
 * Person:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png)
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/Person_oltp.png)
 * Employee:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png)
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/employee_oltp.png)
 * Territory:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png)
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/teritory_oltp.png)
 * Product Category:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png)  
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/product_category_oltp.png)  
 * Product Sub Category:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/product_sub_category_oltp.png) 
 * Product:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/product_oltp.png) 
 * Sales Order Header:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/sales_orer_header_oltp.png) 
 * Sales Order Detail:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/sales_order_detail_otlp.png) 
 
 ## Design DWH Phase
 * From the OLTP database, I redesigned the database according to OLAP principles, specifically using dimension modeling and the snowflake schema.
@@ -75,31 +75,31 @@ so I only focus about 8 main tables in AW2012 database:
 * However, the downside of this method is that it complicates the query process.
 
 * Snowflake Schema Design:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/snowflake_dwh.png) 
 
 * Fact SalesOrder:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/fact_sales_order.png) 
 
 * Fact Prodcut:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/fact_product.png) 
 
 * Dim Sales Person:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/dim_sales_person.png) 
 
 * Dim Territory:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/dim_territory.png) 
 
 * Dim Time:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/dim_time.png) 
 
 * Dim Product:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/dim_product.png) 
 
 * Dim ProductSubCategory:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/dim_product_sub_category.png) 
 
 * Dim ProductCategory:
-    ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) 
+    ![Logo](https://github.com/thinh661/AdventureWorks_DataWareHouse_Building/blob/master/image/dim_product_category.png) 
 
 
 
